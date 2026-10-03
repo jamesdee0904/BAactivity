@@ -3,88 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Create a new account">
     <title>Register</title>
     <link rel="stylesheet" href="./css/register.css">
 </head>
 <body>
 
     <main class="auth-container">
-        <section class="auth-card register-card" aria-labelledby="register-title">
+        <section class="auth-card register-card">
 
             <div class="brand">
-                <h1 id="register-title">REGISTER</h1>
+                <h1>REGISTER</h1>
             </div>
 
-            <form action="#" method="post">
+            <form id="myForm" action="#" method="post">
 
                 <div class="name-row">
 
                     <div class="form-group">
                         <label for="full-name">Full Name</label>
+
                         <input
                             type="text"
                             id="full-name"
-                            name="full_name"
+                            name="name"
                             placeholder="Full Name"
-                            autocomplete="name"
-                            required
                         >
+
+                        <span id="name-error" class="error-message"></span>
                     </div>
 
                     <div class="form-group">
                         <label for="contact-number">Contact Number</label>
+
                         <input
-                            type="tel"
+                            type="text"
                             id="contact-number"
                             name="contact_number"
                             placeholder="Contact Number"
-                            autocomplete="tel"
-                            required
                         >
+
+                        <span id="contact-error" class="error-message"></span>
                     </div>
 
                 </div>
 
                 <div class="form-group">
                     <label for="register-email">Email Address</label>
+
                     <input
-                        type="email"
+                        type="text"
                         id="register-email"
                         name="email"
                         placeholder="Enter your email"
-                        autocomplete="email"
-                        required
                     >
+
+                    <span id="email-error" class="error-message"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="register-password">Password</label>
+
                     <input
                         type="password"
                         id="register-password"
                         name="password"
                         placeholder="Create a password"
-                        autocomplete="new-password"
-                        minlength="8"
-                        required
                     >
+
+                    <span id="password-error" class="error-message"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="confirm-password">Confirm Password</label>
+
                     <input
                         type="password"
                         id="confirm-password"
                         name="confirm_password"
                         placeholder="Confirm your password"
-                        autocomplete="new-password"
-                        minlength="8"
-                        required
                     >
+
+                    <span id="confirm-error" class="error-message"></span>
                 </div>
 
-                <button type="submit" class="btn">Create Account</button>
+                <button type="submit" class="btn">
+                    Create Account
+                </button>
 
             </form>
 
@@ -100,5 +104,107 @@
         </section>
     </main>
 
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let valid = true;
+
+            let name = document.getElementById("full-name");
+            let contact = document.getElementById("contact-number");
+            let email = document.getElementById("register-email");
+            let password = document.getElementById("register-password");
+            let confirmPassword = document.getElementById("confirm-password");
+
+            document.getElementById("name-error").textContent = "";
+            document.getElementById("contact-error").textContent = "";
+            document.getElementById("email-error").textContent = "";
+            document.getElementById("password-error").textContent = "";
+            document.getElementById("confirm-error").textContent = "";
+
+            name.classList.remove("input-error");
+            contact.classList.remove("input-error");
+            email.classList.remove("input-error");
+            password.classList.remove("input-error");
+            confirmPassword.classList.remove("input-error");
+
+            if (name.value.trim() === "") {
+                document.getElementById("name-error").textContent = "Please enter your full name.";
+                name.classList.add("input-error");
+                valid = false;
+            }
+            else if (name.value.trim().length < 7) {
+                document.getElementById("name-error").textContent = "Full name must be at least 7 characters.";
+                name.classList.add("input-error");
+                valid = false;
+            }
+            else if (name.value.trim().length > 30) {
+                document.getElementById("name-error").textContent = "Full name must not exceed 30 characters.";
+                name.classList.add("input-error");
+                valid = false;
+            }
+
+            if (contact.value.trim() === "") {
+                document.getElementById("contact-error").textContent = "Please enter your contact number.";
+                contact.classList.add("input-error");
+                valid = false;
+            }
+            else if (!/^[0-9]+$/.test(contact.value.trim())) {
+                document.getElementById("contact-error").textContent = "Contact number must contain numbers only.";
+                contact.classList.add("input-error");
+                valid = false;
+            }
+            else if (contact.value.trim().length < 10) {
+                document.getElementById("contact-error").textContent = "Contact number must be at least 10 digits.";
+                contact.classList.add("input-error");
+                valid = false;
+            }
+            else if (contact.value.trim().length > 15) {
+                document.getElementById("contact-error").textContent = "Contact number must not exceed 15 digits.";
+                contact.classList.add("input-error");
+                valid = false;
+            }
+
+            if (email.value.trim() === "") {
+                document.getElementById("email-error").textContent = "Please enter your email address.";
+                email.classList.add("input-error");
+                valid = false;
+            }
+            else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+                document.getElementById("email-error").textContent = "Please enter a valid email address.";
+                email.classList.add("input-error");
+                valid = false;
+            }
+
+            if (password.value === "") {
+                document.getElementById("password-error").textContent = "Please enter your password.";
+                password.classList.add("input-error");
+                valid = false;
+            }
+            else if (password.value.length < 9) {
+                document.getElementById("password-error").textContent = "Password must be at least 9 characters.";
+                password.classList.add("input-error");
+                valid = false;
+            }
+
+            if (confirmPassword.value === "") {
+                document.getElementById("confirm-error").textContent = "Please confirm your password.";
+                confirmPassword.classList.add("input-error");
+                valid = false;
+            }
+            else if (confirmPassword.value !== password.value) {
+                document.getElementById("confirm-error").textContent = "Passwords do not match.";
+                confirmPassword.classList.add("input-error");
+                valid = false;
+            }
+
+            if (valid) {
+                this.submit();
+            }
+        });
+    </script>
+
 </body>
 </html>
+
