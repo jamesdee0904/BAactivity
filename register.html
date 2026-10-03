@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create a new account">
+    <title>Register</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+
+    <main class="auth-container">
+        <section class="auth-card register-card" aria-labelledby="register-title">
+
+            <div class="brand">
+                <h1 id="register-title">REGISTER</h1>
+            </div>
+
+            <form action="#" method="post">
+
+                <div class="name-row">
+
+                    <div class="form-group">
+                        <label for="full-name">Full Name</label>
+                        <input
+                            type="text"
+                            id="full-name"
+                            name="full_name"
+                            placeholder="Full Name"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-number">Contact Number</label>
+                        <input
+                            type="tel"
+                            id="contact-number"
+                            name="contact_number"
+                            placeholder="Contact Number"
+                            autocomplete="tel"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="register-email">Email Address</label>
+                    <input
+                        type="email"
+                        id="register-email"
+                        name="email"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input
+                        type="password"
+                        id="register-password"
+                        name="password"
+                        placeholder="Create a password"
+                        autocomplete="new-password"
+                        minlength="8"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input
+                        type="password"
+                        id="confirm-password"
+                        name="confirm_password"
+                        placeholder="Confirm your password"
+                        autocomplete="new-password"
+                        minlength="8"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn">Create Account</button>
+
+            </form>
+
+            <div class="divider">
+                <span>OR</span>
+            </div>
+
+            <p class="account-text">
+                Already have an account?
+                <a href="login.html">Login here</a>
+            </p>
+
+        </section>
+    </main>
+
+</body>
+</html>

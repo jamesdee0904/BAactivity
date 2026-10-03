@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&display=swap');
+
+:root {
+    --bg-dark: #0a0c16;
+    --card-bg: rgba(18, 22, 41, 0.85);
+    --primary-neon: #ff2a75;
+    --secondary-neon: #00f0ff;
+    --accent-yellow: #ffe600;
+    --text-main: #ffffff;
+    --text-muted: #a0a7cc;
+    --border-color: rgba(255, 42, 117, 0.4);
+
+    --font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --glow-primary: 0 0 15px rgba(255, 42, 117, 0.6);
+    --glow-secondary: 0 0 15px rgba(0, 240, 255, 0.6);
+    --clip-angle: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-dark);
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(255, 42, 117, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(0, 240, 255, 0.15) 0%, transparent 40%),
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+    color: var(--text-main);
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px 35px;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border: 2px solid var(--border-color);
+    clip-path: polygon(0 0, calc(100% - 25px) 0, 100% 25px, 100% 100%, 25px 100%, 0 calc(100% - 25px));
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(255, 42, 117, 0.1);
+    position: relative;
+}
+
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-neon), var(--secondary-neon));
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 6px;
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #fff;
+    text-transform: uppercase;
+    font-style: italic;
+    text-shadow: 
+        2px 2px 0px var(--primary-neon),
+        -2px -2px 0px var(--secondary-neon);
+}
+
+.login-container p {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+}
+
+.input-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input-group label {
+    display: block;
+    color: var(--secondary-neon);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(10, 12, 22, 0.7);
+    border: 1px solid rgba(160, 167, 204, 0.3);
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.25s ease-in-out;
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+}
+
+.input-group input::placeholder {
+    color: rgba(160, 167, 204, 0.5);
+}
+
+.input-group input:focus {
+    border-color: var(--primary-neon);
+    background: rgba(255, 42, 117, 0.05);
+    box-shadow: var(--glow-primary);
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.options input[type="checkbox"] {
+    accent-color: var(--primary-neon);
+    cursor: pointer;
+}
+
+.options a {
+    color: var(--secondary-neon);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.options a:hover {
+    color: var(--primary-neon);
+    text-shadow: var(--glow-primary);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 14px 20px;
+    background: var(--primary-neon);
+    color: #fff;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    clip-path: var(--clip-angle);
+    transition: all 0.2s ease;
+    box-shadow: var(--glow-primary);
+}
+
+.login-btn:hover {
+    background: var(--secondary-neon);
+    color: #000;
+    box-shadow: var(--glow-secondary);
+    transform: translateY(-2px) scale(1.01);
+}
+
+.login-btn:active {
+    transform: translateY(1px);
+}
+
+.signup {
+    text-align: center;
+    margin-top: 22px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.signup a {
+    color: var(--secondary-neon);
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 5px;
+    transition: all 0.2s ease;
+}
+
+.signup a:hover {
+    color: var(--primary-neon);
+    text-shadow: var(--glow-primary);
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 30px 20px;
+    }
+
+    .login-container h2 {
+        font-size: 1.8rem;
+    }
+}
+
+.input-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.input-container .icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+  pointer-events: none;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 10px 10px 10px 38px;
+  box-sizing: border-box;
+}
+
+
